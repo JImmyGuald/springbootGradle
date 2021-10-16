@@ -23,8 +23,14 @@ public class TbTestController {
     @Autowired
     private ITbTestService testService;
 
+    private static volatile Integer a = 0;
+    private Object lock = new Object();
+
     @GetMapping("/{id}")
-    public Object get(@PathVariable(value = "id") int id){
+    public Object get(@PathVariable int id){
+        synchronized (lock) {
+            System.out.println(++a);
+        }
         return testService.getById(id);
     }
 }

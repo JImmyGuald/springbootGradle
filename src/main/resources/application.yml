@@ -1,10 +1,18 @@
+server:
+  tomcat:
+    #最小线程数
+    min-spare-threads: 20
+    #最大线程数
+    max-threads: 100
+    connection-timeout: 5000
+
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
-      minimumIdle: 5
-      maximum-pool-size: 15
+      minimumIdle: 10
+      maximum-pool-size: 30
       auto-commit: true
       idle-timeout: 30000
       pool-name: DatebookHikariCP
